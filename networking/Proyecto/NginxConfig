@@ -1,0 +1,160 @@
+server { # Este servidor va a escuchar en el puerto 80 (el puerto por defecto de HTTP)
+listen 80 default_server;
+listen [::]:80 default_server;
+
+    # Definimos que en /var/www/html van a estar todos los archivos estáticos (HTML, CSS, JavaScript, imágenes...)
+    root /var/www/html;
+
+    # Definimos que, si no encuentra un cierto archivo, se va a devolver un error 404.
+    location / {
+    	try_files $uri $uri/ =404;
+    }
+
+    # Vamos a devolver un HTML y un código 200 al llamar a http://0.0.0.0/proyecto.html
+    # Para devolver un HTML desde un "location", hay que añadir la configuración "Content-type:text/html"
+    # Esto lo podemos ver desde el navegador o con Postman/HTTPie/cURL (con HTTPie sería: "http http://0.0.0.0/proyecto.html")
+    location /proyecto.html {
+    	add_header Content-type text/html;
+    	return 200 'Aquí tienes tu html';
+    }
+
+    # Servir la imagen chessi1.jpg
+    location /chessi1.jpg {
+        alias /var/www/html/chessi1.jpg;
+        return 200 'Aquí tienes tu imagen';
+    }
+
+    # Servir el archivo JavaScript archivo1.js en la ruta /javascript/archivo1.js
+    location /javascript/archivo1.js {
+        alias /var/www/html/javascript/archivo1.js;
+        return 200 'Aquí tienes tu JavaScript';
+    }
+
+    # Servir el archivo prueba2.html en la ruta /prueba2.html
+    location /prueba2.html {
+        alias /var/www/html/prueba2.html;
+        return 200 'Prueba correcta';
+    }
+
+    # Vamos a devolver un error 500 cuando accedamos a http://0.0.0.0/error
+    # Esto lo podemos ver desde el navegador o con Postman/HTTPie/cURL (con HTTPie sería: "http http://0.0.0.0/error")
+    location /error {
+    	return 500;
+    }
+
+    # En este caso vamos a devolver un JSON y un código 201 con cada uno de los métodos que se usen.
+    # Para hacer esto, usamos los "if" de Nginx, y comprobamos el objeto $request_method, que nos devuelve el método de la petición
+    # Esto lo podemos ver desde el navegador o con Postman/HTTPie/cURL, para ver cómo devolvemos un 200 al usar un POST o un 503 en el resto de casos
+    # (con HTTPie sería: "http POST http://0.0.0.0/metodo")
+    location /metodo {
+    	if ($request_method = POST) {
+    		return 201 '{"codigo":"1", "mensaje":"Es un POST"}';
+    	}
+        if ($request_method = GET) {
+    		return 201 '{"codigo":"1", "mensaje":"Es un GET"}';
+    	}
+        if ($request_method = PUT) {
+    		return 201 '{"codigo":"1", "mensaje":"Es un PUT"}';
+    	}
+        if ($request_method = DELETE) {
+    		return 201 '{"codigo":"1", "mensaje":"Es un DELETE"}';
+    	}
+    }
+
+    # Devolvemos una cabecera inventada por nosotros, y la podemos ver con HTTPie por ejemplo ("http http://0.0.0.0/cabecera")
+    # Además, en este caso devolvemos un 201 en vez de un 200
+    location /cabecera {
+    	add_header Perdon por el retraso;
+    	return 204;
+    }
+
+    # Ahora vamos a hacer una redirección, para eso usamos la función "rewrite" de Nginx
+    # En este caso vamos a devolver un 302 (redirección temporal) y hacer una redirección a https://w3schools.com
+    # Si vemos la llamada con HTTPie ("http http://0.0.0.0/redireccion1") vemos que la nueva URL viene en la cabecera "location"
+    rewrite /redireccion1 hhttps://w3schools.com redirect;
+
+    # En este caso vamos a devolver un 302 (redirección temporal) y hacer una redirección a http://0.0.0.0/cabecera
+    # Si vemos la llamada con HTTPie ("http http://0.0.0.0/redireccion1") vemos que la nueva URL viene en la cabecera "location"
+    rewrite /redireccion2 http://0.0.0.0/cabecera redirect;
+
+    # También podemos enviar parámetros en la URL
+    # En este caso, vamos a hacer que, si se envía un parámetro llamado "nombre", devolvemos un 200, en caso contrario devolvemos un 400
+    # Para esto usamos nuevamente un "if" y comprobamos el objeto "arg_nombre" para ver si viene ese parámetro
+    # Veremos que solo devolveremos un 200 si llamamos a la URL http://0.0.0.0/parametro?nombre=cualquiercosa
+    # (con HTTPie sería: "http http://0.0.0.0/respuesta?nombre=cualquiercosa")
+    location /respuesta {
+    	if ($arg_json) {
+            add_header Content-Type application/json;
+    		return 200 '{"codigo":"2", "mensaje":"Has solicitado un JSON"}';
+    	}
+        if ($arg_html) {
+            add_header Content-Type text/html;
+    		return 200 '<html><head><title>Respuesta HTML</title></head><body><h1>Has solicitado un HTML</h1><p>Contenido HTML de ejemplo.</p></body></html>';
+            }
+    	return 404;
+    }
+
+    # Servir los logs en http://0.0.0.0/logs.log
+    location /logs.log {
+        alias /var/www/html/logs.log;
+        return 200 'Aquí tienes los logs';
+    }
+
+}
+
+server {
+listen 8000;
+
+    # Este es el HTML inicial, al que se accede automáticamente al entrar a https://0.0.0.0
+    index index.html index.htm index.nginx-debian.html;
+
+    # Definimos que en /var/www/html van a estar todos los archivos estáticos (HTML, CSS, JavaScript, imágenes...)
+    root /var/www/html;
+
+    # Definimos que, si no encuentra un cierto archivo, se va a devolver un error 404.
+    location / {
+    	try_files $uri $uri/ =404;
+    }
+
+}
+
+    # Levantamos un nuevo servidor, pero esta vez con HTTPS y en el puerto 443 (el puerto por defecto de HTTPS
+    # Podremos acceder a él en https://0.0.0.0 (o lo que es lo mismo https://0.0.0.0:443)
+
+server {
+listen 443;
+
+    # Este es el HTML inicial, al que se accede automáticamente al entrar a https://0.0.0.0
+    index index.html index.htm index.nginx-debian.html;
+
+    # Definimos que en /var/www/html van a estar todos los archivos estáticos (HTML, CSS, JavaScript, imágenes...)
+    root /var/www/html;
+
+    # Activamos la capa de SSL
+    ssl                 on;
+    server_name         0.0.0.0;
+
+    # Especificamos dónde ponemos la clave privada y el certificado público
+    ssl_certificate     /etc/nginx/certs/certificate.pem;
+    ssl_certificate_key /etc/nginx/certs/key.pem;
+
+    # Especificamos otros parámetro de SSL
+    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    # Vamos a meter una autenticación Bacis (usuario + contraseña), y para ello hay que instalar ese paquete: "sudo apt install apache2-utils"
+    # Para crear un usuario y contraseña, hay que ejecutar "sudo htpasswd -c /etc/nginx/.htpasswd usuario1"
+    # Para añadir usuarios: "sudo htpasswd /etc/nginx/.htpasswd usuario2"
+    auth_basic "Contenido restringido";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+
+    #User: prueba1   psswd: 123
+    #User: prueba2   psswd: 321
+
+    # Volvemos a poner que se sirvan los archivos de /var/www/html y que, si no se encuentra el archivo, se devuelva un error 404
+    root /var/www/html;
+    location / {
+    	try_files $uri $uri/ =404;
+    }
+
+}
