@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="setDiameter(); setThickness()">Empecemos</button>
+
+<p id="finalDiameter"></p>
+<p id="finalThickness"></p>
+
+<script>    
+function setDiameter() {
+    let diameterValue;
+    let diameter = prompt("¿De cuantos metros quieres el diametro de tu rueda?");
+    if (diameter == null || diameter == "") {
+    alert("Por favor, necesito que me des una medida");
+    } else if (isNaN(diameter) || diameter <= 0) {
+    alert(" Necesito que me proporciones un número positivo")
+    } else { diameterValue = "Tu rueda tiene " + diameter + " metros de diametro";
+    }
+    document.getElementById("finalDiameter").innerHTML = diameterValue;
+}
+
+function setThickness() {  
+    let thicknessValue;
+    let thickness = prompt("De cuantos metros quieres el grosor de tu rueda?")
+    if (thickness == null || thickness == "") {
+    alert("Por favor, necesito que me des una medida")
+    } else if (isNaN(thickness) || thickness <= 0) {
+    alert(" Necesito que me proporciones un número positivo")
+    } else { thicknessValue = "Tu rueda tiene " + thickness + " mestros de grosor";
+    }
+    document.getElementById("finalThickness").innerHTML = thicknessValue
+}
+
+
+</script>
+
+</body>
+</html>
