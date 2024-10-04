@@ -17,7 +17,6 @@ un vehículo pequeño”.
 function vehicleSize() {
     const diameterValue = parseFloat(document.getElementById("num1").value);
     let vehicleType;
-    
     if (diameterValue > 1.4) {
         vehicleType = "La rueda es para un vehículo grande";
     } else if (diameterValue <= 1.4 && diameterValue > 0.8) {
@@ -41,8 +40,7 @@ function recommendThickness() {
     const diameterValue = parseFloat(document.getElementById("num1").value);
     const thicknessValue = parseFloat(document.getElementById("num2").value);
     let tireType;
-
-    if (isNaN(diameterValue) || isNaN(thicknessValue) ) {
+    if (isNaN(diameterValue) || isNaN(thicknessValue)) {
      tireType = "Por favor especifica ambas medidas";
     } else if (diameterValue > 1.4 && thicknessValue < 0.4) {
         tireType = "El grosor para esta rueda es inferior al recomendado";
