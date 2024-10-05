@@ -2,20 +2,37 @@
 <html>
 <head>
         <title> Ex_Tema3</title>
-</head>
+        <meta charset="UTF-8">
+        <style>
+                body {background-color: powderblue;}
+                h1 {color: black;
+                font-size: 50px;}
+                label {color: darkblue;
+                font-size: 16px}
+                .button {background-color: grey;
+                        border: none;
+                        padding: 12px 28px;
+                        text-align: center;
+                        display: inline-block;
+                        font-size: 16px;
+                        cursor: pointer;}
+                p {color: darkgreen;
+                font-size: 20px}
+        </style>
+</head> 
 <body>
 <h1>Escoja los parámetros de su rueda</h1></br>
 
 <label for="num1">Escoja el diametro de su rueda en metros:</label>
-<input type="number" id="num1" name="diameter" min="0.001" max="9999" step="0.001" />
-
-<label for="num2">Escoja el grosor de su rueda en metros:</label>
-<input type="number" id="num2" name="thickness" min="0.001" max="9999" step="0.001" />
-
-<p><input type="button" onclick="vehicleSize()" value="Analicemos su coche"></p>
+<input id="num1" name="diameter" min="0.001" max="9999" step="0.001" /><br>
+<br>
+<label class="label" for="num2">Escoja el grosor de su rueda en metros:</label>
+<input type="number" id="num2" name="thickness" min="0.001" max="9999" step="0.001" /><br>
+<br>
+<p><input type="button" class="button" onclick="vehicleSize()" value="Analicemos su coche"></p>
 <p id="finalVehicle"></p>
 </br>
-<p><input type="button" onclick="recommendThickness()" value="¿Ha escogido bien sus ruedas?"></p>
+<p><input type="button" class="button" onclick="recommendThickness()" value="¿Ha escogido bien sus ruedas?"></p>
 <p id="finalTire"></p>
 
 <script src="Ex_Ev_Tema3.js"> </script>
