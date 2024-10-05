@@ -3,12 +3,12 @@
 // preguntar de nuevo.
 
 
-function start_Infinite_Loop(){  
+function start_Infinite_Loop() {  
 while (true) { 
-    const mult1 = prompt("Define el primer número");
-    const mult2 = prompt("Define el segundo número");
+    let mult1 = prompt("Define el primer número");
+    let mult2 = prompt("Define el segundo número");
         if (isNaN(mult1) || isNaN(mult2)) { 
-        alert("Por favor introduce solo numeros");
+        alert("Por favor introduce solo números");
         } else {alert(mult1*mult2)}
     }    
 } 

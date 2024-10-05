@@ -24,15 +24,14 @@
 <h1>Escoja los parámetros de su rueda</h1></br>
 
 <label for="num1">Escoja el diametro de su rueda en metros:</label>
-<input id="num1" name="diameter" min="0.001" max="9999" step="0.001" /><br>
+<input type="number" id="num1" name="diameter" min="0.001" max="9999" step="0.001" /><br>
 <br>
 <label class="label" for="num2">Escoja el grosor de su rueda en metros:</label>
 <input type="number" id="num2" name="thickness" min="0.001" max="9999" step="0.001" /><br>
 <br>
-<p><input type="button" class="button" onclick="vehicleSize()" value="Analicemos su coche"></p>
+<p><input type="button" class="button" onclick="start_check()" value="Analicemos su coche"></p>
 <p id="finalVehicle"></p>
 </br>
-<p><input type="button" class="button" onclick="recommendThickness()" value="¿Ha escogido bien sus ruedas?"></p>
 <p id="finalTire"></p>
 
 <script src="Ex_Ev_Tema3.js"> </script>

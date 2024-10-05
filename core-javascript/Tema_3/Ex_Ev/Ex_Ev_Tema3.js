@@ -14,35 +14,37 @@ mensaje “La rueda es para un vehículo mediano”. Si no se cumplen ninguna de
 condiciones anteriores debe mostrarse por pantalla el mensaje “La rueda es para
 un vehículo pequeño”.
  */
-function vehicleSize() {
-    const diameterValue = parseFloat(document.getElementById("num1").value);
+function start_check() {
+    let diameterValue = parseFloat(document.getElementById("num1").value);
+    let thicknessValue = parseFloat(document.getElementById("num2").value);
+    if (diameterValue < 0 || thicknessValue < 0 || isNaN(diameterValue) || isNaN(thicknessValue)) {
+        alert("Por favor especifica dos medidas válidas");
+        return;
+    }
+    vehicleSize(diameterValue);
+    recommendThickness(diameterValue, thicknessValue);
+}
+
+function vehicleSize(diameterValue) {
     let vehicleType;
     if (diameterValue > 1.4) {
         vehicleType = "La rueda es para un vehículo grande";
     } else if (diameterValue <= 1.4 && diameterValue > 0.8) {
         vehicleType = "La rueda es para un vehículo mediano";
-    } else if (diameterValue <= 0.8) {
+    } else {
         vehicleType = "La rueda es para un vehículo pequeño";
-    } else { 
-        vehicleType = "Por favor especifica un diametro";
-    }
+    } 
     document.getElementById("finalVehicle").innerHTML = vehicleType;
 }
-
-
 
 /* b) Si el diámetro es superior a 1.4 con un grosor inferior a 0.4, ó si el diámetro es
 menor o igual a 1.4 pero mayor que 0.8, con un grosor inferior a 0.25, deberá
 mostrarse el mensaje “El grosor para esta rueda es inferior al recomendado”
  */
 
-function recommendThickness() {
-    const diameterValue = parseFloat(document.getElementById("num1").value);
-    const thicknessValue = parseFloat(document.getElementById("num2").value);
+function recommendThickness(diameterValue, thicknessValue) {
     let tireType;
-    if (isNaN(diameterValue) || isNaN(thicknessValue)) {
-     tireType = "Por favor especifica ambas medidas";
-    } else if (diameterValue > 1.4 && thicknessValue < 0.4) {
+    if (diameterValue > 1.4 && thicknessValue < 0.4) {
         tireType = "El grosor para esta rueda es inferior al recomendado";
     } else if (diameterValue <= 1.4 && diameterValue > 0.8 && thicknessValue < 0.25) {
         tireType = "El grosor para esta rueda es inferior al recomendado";
