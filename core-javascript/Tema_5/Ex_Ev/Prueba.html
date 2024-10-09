@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Dígitos</title>
+    <script>
+        function obtenerDatos() {
+            const digito = document.getElementById('digito').value;
+            const numero = document.getElementById('numero').value;
+
+            if (digito.length !== 1 || isNaN(digito)) {
+                alert("Por favor, ingresa un único dígito del 0 al 9.");
+            } else if (isNaN(numero)) {
+                alert("Por favor, ingresa un número válido.");
+            } else {
+                const resultado = contarOcurrencias(digito, numero);
+                alert(`El dígito ${digito} aparece ${resultado} veces en el número ${numero}.`);
+            }
+
+        function contarOcurrencias(digito, numero) {
+            const strNumero = numero.toString();
+            const strDigito = digito.toString();
+            let contador = 0;
+
+            for (let i = 0; i < strNumero.length; i++) {
+                if (strNumero[i] === strDigito) {
+                    contador++;
+                }
+            }
+
+            return contador;
+        }
+        }
+    </script>
+</head>
+<body>
+    <h1>Contador de Dígitos</h1>
+    <label for="digito">Ingresa un dígito (0-9):</label>
+    <input type="text" id="digito" maxlength="1"><br><br>
+
+    <label for="numero">Ingresa un número:</label>
+    <input type="text" id="numero"><br><br>
+
+    <button onclick="obtenerDatos()">Contar Ocurrencias</button>
+</body>
+</html>
