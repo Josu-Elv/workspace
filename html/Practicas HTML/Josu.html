@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Prueba HTML</title>
+   <title>Prueba HTML</title>
+   <style>
+      div{
+         border:1px solid red;
+         margin:1em;
+         }
+         .bord_0{
+             border-width: 10px ;
+         }
+         .bord_1{
+             border-width: 2px 4px ;
+         }
+         .bord_2{
+             border-width: 2px 4px 6px ;
+         }
+         .bord_3{
+             border-width:  2px 4px 6px 1px ;
+         }
+         .bord_4{
+             border-width: 0;
+         }
+   </style>
 </head>
 <body>
+<p id=”mi_id” style="color: green"> ¿De que color soy? </p>
 <h1>Esto es una prueba de HTML</h1>
 <p>Hola buenos días
    <br> Hola
@@ -15,6 +37,15 @@
  </p><p><strong>Hola buenos días</strong>
     <br> <b>Hola</b>
  </p>
+ <div style="background:blue" class="bord_0">
+   <p>in div1</p>
+   <div style="background:yellow" class="bord_1">
+       <p>in div2</p>
+   </div>
+   <div style="background:yellow" class="bord_2">
+       <p>in div3</p>
+   </div>
+</div><br>
  <img src="https://www.pamplona.es/themes/custom/ayuntamiento_theme/images/mapa-pie.jpg" /> <br>
  <a href="https://www.pamplona.es/" title="Página web del ayto"> Haz click en este enlace! </a>
  </body>
