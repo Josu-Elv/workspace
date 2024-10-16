@@ -148,7 +148,6 @@ listen 443;
     auth_basic "Contenido restringido";
     auth_basic_user_file /etc/nginx/.htpasswd;
 
-    #User: prueba1   psswd: 123
     #User: prueba2   psswd: 321
 
     # Volvemos a poner que se sirvan los archivos de /var/www/html y que, si no se encuentra el archivo, se devuelva un error 404
