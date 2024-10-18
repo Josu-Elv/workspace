@@ -7,10 +7,12 @@ const readline = require('readline');
 
 function arrayMultiply(arrayLength, multiple) {
     let arrayInit = [];
+
     arrayLength = parseFloat(arrayLength)
-        if ( arrayLength < 0 || isNaN(arrayLength) || !Number.isInteger(arrayLength)) {
-            throw new Error("Array Length Not Valid")
-        }
+    if ( arrayLength < 0 || isNaN(arrayLength) || !Number.isInteger(arrayLength)) {
+        throw new Error("Array Length Not Valid")
+    }
+
     multiple = parseFloat(multiple);
     if (isNaN(multiple)) {
         throw new Error("Multiple Not Valid");
@@ -23,18 +25,21 @@ function arrayMultiply(arrayLength, multiple) {
     return arrayInit; 
 }
 
-// Petición de inputs
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
-rl.question("Ingresa el tamaño del array: ", (arrayLength) => {
-    rl.question("Ingresa el número para multiplicar: ", (multiple) => {
-        const result = arrayMultiply(arrayLength, multiple);
-        console.log("Array resultante:", result); // 
-        rl.close(); 
+if (require.main === module) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
     });
-});
+
+    rl.question("Ingresa el tamaño del array: ", (arrayLength) => {
+        rl.question("Ingresa el número para multiplicar: ", (multiple) => {
+            const result = arrayMultiply(arrayLength, multiple);
+            console.log("Array resultante:", result); 
+            rl.close(); 
+        });
+    });
+}
 
 module.exports = arrayMultiply;
+

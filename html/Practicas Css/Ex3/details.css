@@ -1,0 +1,106 @@
+.header {
+    text-align: left;
+}
+
+#maintitle {
+    font-size: 40px;   
+    margin-left: 20px;
+}
+
+#titleicon {
+    width: 30px;
+    height: 30px;
+}
+
+.content {
+    flex: 1;
+}
+
+section {
+    flex: auto;
+    align-self: center;
+    border: 2px solid #c27a0f;
+    background-image: url("../Ex3/icons/cuttingboard.jpg");
+    background-size: cover;
+}
+
+
+.article {
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    flex-grow: 1;
+    
+}
+
+#index {
+    color: black;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding:5px;
+    margin: 5px;
+    background: rgb(219, 215, 215);
+    display: inline-block;
+}
+
+#index::before {
+    content: "<="
+}
+
+#index:hover {
+    color: yellow;
+    
+}
+
+#bloque_titulo_receta {
+    background: none;
+    font-size: 30px;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+   
+}
+
+:is(.article > p, #linkrecipe) {
+    color: darkblue !important;
+    background-color: white;
+    padding: 20px;
+    flex-grow: 1;
+    text-align: justify;
+    margin: 0;
+}
+
+nav {
+    margin: 0; 
+}   
+
+#linkrecipe {
+    display: block; 
+    margin-left: 0;
+    color: blue;
+    text-decoration: none; 
+}
+
+#linkrecipe:hover {
+    text-decoration: underline; 
+}
+
+.footer-list li{
+    display: inline;
+    margin: 20px;
+    font-size: 18px;
+}
+
+
+a[href] {
+    color: darkblue;
+}

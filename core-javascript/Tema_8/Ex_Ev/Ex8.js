@@ -28,7 +28,7 @@ class stringWork {
         return this.string.split('').filter(char => 'aeiouAEIOU'.includes(char) || char === ' ').join('');
     }
     reverseOrder() {
-        return this.string.split(' ').reverse().join(' ');
+        return this.string.split(/\s+/).reverse().join(' ');
     }
   } 
 

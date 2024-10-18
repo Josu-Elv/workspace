@@ -1,0 +1,31 @@
+header {
+    background-color: lightblue;
+    color: black;
+    border: 2px solid black;
+
+}
+
+body {
+    background-image: url("https://jordibordas.com/wp-content/uploads/2022/06/recetas-libro.jpg");
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0, auto;
+    align-self: center;
+    cursor: url("../Ex3/icons/foo165.cur"), auto;
+}
+
+footer {
+    background-color: lightblue;
+    color: black;
+    font-size: 22px;    
+    position: fixed;
+    left: 0;    
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border: 2px solid blue;
+    flex: none;
+}
