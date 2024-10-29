@@ -1,0 +1,47 @@
+Table, td, th {
+	border: black 1px solid;
+	text-align: center;
+	font: 15px Arial ;
+   }
+
+#Caption {
+	text-align: left;
+}
+
+.days {
+	background-color: bisque;
+	font-weight: bold;
+	padding: 3px;
+	font-size: 14px;
+}
+
+.rowheader {
+	background-color: rgb(190, 218, 89);
+	padding: 3px;
+}
+
+.pinkback {
+	background-color: pink;
+	font-style: italic;
+	padding: 3px;
+	font-size: 16px;
+}
+
+.redback {
+	background-color: red;
+	font-style: italic;
+	padding: 3px;
+	font-size: 16px;
+}
+
+.blueback {
+	background-color: lightblue;
+	font-size: 10px;
+	padding: 3px;
+}
+
+.yellowback {
+	background-color: yellow;
+	color: grey;
+	font-size: 16px;
+}

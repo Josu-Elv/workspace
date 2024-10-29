@@ -1,0 +1,75 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Encabezado */
+h1 {
+    color: #4CAF50;
+    margin-top: 20px;
+}
+
+/* Contenedor de entrada y botones */
+input[type="number"],
+button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Contenedor de mensajes */
+#articleContent, #titlesList, #articlesTable {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 15px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabla de artículos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Texto de alerta de error */
+p {
+    color: #f00;
+    font-weight: bold;
+}

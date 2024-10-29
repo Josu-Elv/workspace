@@ -1,0 +1,89 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
+  
+  body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f7f7f7;
+	font-family: Arial, sans-serif;
+	color: #333;
+	padding: 20px;
+  }
+  
+  h2 {
+	font-size: 2rem;
+	margin-bottom: 20px;
+	color: #444;
+  }
+  
+  div {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 15px;
+	margin-bottom: 20px;
+  }
+  
+  img {
+	width: 200px;
+	height: 350px;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  img:hover {
+	transform: scale(1.05);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Efectos de filtro personalizados */
+  #id2 {
+	filter: brightness(0.4);
+  }
+  
+  #id3 {
+	filter: contrast(200%);
+  }
+  
+  #id4 {
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+  }
+  
+  #id5 {
+	filter: grayscale(50%);
+  }
+  
+  #id6 {
+	filter: hue-rotate(90deg);
+  }
+  
+  #id7 {
+	filter: invert(75%);
+  }
+  
+  #id8 {
+	filter: opacity(25%);
+  }
+  
+  #id9 {
+	filter: saturate(30%);
+  }
+  
+  #id10 {
+	filter: sepia(60%);
+  }
+  
+  #id11 {
+	filter: blur(2px);
+  }
+  
+  #id12 {
+	filter: drop-shadow(3px 3px red) sepia(100%) drop-shadow(-3px -3px blue);
+  }
+  
